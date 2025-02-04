@@ -48,9 +48,9 @@ sky:
 cloud:
   aws:
     credentials:
-      access-key: ${cloud.aws.credentials.access-key}
-      secret-key: ${cloud.aws.credentials.secret-key}
-    region: ${cloud.aws.region}
+      access-key: ${cloud.access-key}
+      secret-key: ${cloud.secret-key}
+    region: ${cloud.region}
     stack:
       auto: false
 
