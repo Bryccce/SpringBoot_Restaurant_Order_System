@@ -7,8 +7,3 @@ sky:
     username: root
     password: "Yqy030115:"
 
-cloud:
-  access-key: AKIAW5BDRLC4OWB4OGWZ
-  secret-key: 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
-  region: us-east-2
-  name: brycccetakeout
