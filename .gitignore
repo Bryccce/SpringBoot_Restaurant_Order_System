@@ -4,3 +4,6 @@
 *.class
 *Test.java
 **/test/
+# Ignore environment configuration files
+application-dev.yml
+src/main/resources/application-dev.yml
