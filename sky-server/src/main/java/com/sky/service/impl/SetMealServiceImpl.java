@@ -13,6 +13,7 @@ import com.sky.mapper.SetMealDishMapper;
 import com.sky.mapper.SetmealMapper;
 import com.sky.result.PageResult;
 import com.sky.service.SetMealService;
+import com.sky.vo.DishItemVO;
 import com.sky.vo.SetmealVO;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -103,16 +104,30 @@ public class SetMealServiceImpl implements SetMealService {
         });
 
         ids.forEach(setmealId -> {
-            //删除套餐表中的数据
-            setmealMapper.deleteById(setmealId);
-            //删除套餐菜品关系表中的数据
-            setMealDishMapper.deleteBySetmealId(setmealId);
-        }
+                    //删除套餐表中的数据
+                    setmealMapper.deleteById(setmealId);
+                    //删除套餐菜品关系表中的数据
+                    setMealDishMapper.deleteBySetmealId(setmealId);
+                }
         );
     }
 
     @Override
     public void modifyStatus(Integer status, Long id) {
         setmealMapper.stopOrRun(status, id);
+    }
+
+    public List<Setmeal> list(Setmeal setmeal) {
+        List<Setmeal> list = setmealMapper.list(setmeal);
+        return list;
+    }
+
+    /**
+     * 根据id查询菜品选项
+     * @param id
+     * @return
+     */
+    public List<DishItemVO> getDishItemById(Long id) {
+        return setmealMapper.getDishItemBySetmealId(id);
     }
 }
