@@ -34,6 +34,7 @@ public class Orders implements Serializable {
     public static final Integer UN_PAID = 0;
     public static final Integer PAID = 1;
     public static final Integer REFUND = 2;
+    public static final Integer CANCELED = 3;
 
     private static final long serialVersionUID = 1L;
 
