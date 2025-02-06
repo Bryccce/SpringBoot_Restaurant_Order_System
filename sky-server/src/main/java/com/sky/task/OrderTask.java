@@ -24,7 +24,7 @@ public class OrderTask {
     /**
      * 处理支付超时订单
      */
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0/5 * * * ?")
     public void processTimeoutOrder(){
         log.info("处理支付超时订单：{}", new Date());
 
@@ -57,5 +57,17 @@ public class OrderTask {
                 orderMapper.update(order);
             });
         }
+    }
+
+    //call the method every 30 seconds
+    @Scheduled(fixedRate = 30000)
+    public void payOrders(){
+        //make all orders with status 1 to status 2
+        log.info("支付订单", new Date());
+        List<Orders> ordersUnPaid = orderMapper.getByPayStatus(Orders.UN_PAID);
+        ordersUnPaid.forEach(order -> {
+            order.setPaidStatus(Orders.PAID);
+            orderMapper.update(order);
+        });
     }
 }

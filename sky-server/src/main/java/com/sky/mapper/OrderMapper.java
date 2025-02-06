@@ -46,4 +46,10 @@ public interface OrderMapper {
      */
     @Select("select * from orders where status = #{status} and order_time < #{orderTime}")
     List<Orders> getByStatusAndOrdertimeLT(Integer status, LocalDateTime orderTime);
+
+    @Select("select * from orders where status = #{status}")
+    List<Orders> getByStatus(Integer pendingPayment);
+
+    @Select("select * from orders where pay_status = #{unPaid}")
+    List<Orders> getByPayStatus(Integer unPaid);
 }

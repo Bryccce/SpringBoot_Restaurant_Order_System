@@ -108,4 +108,11 @@ public class Orders implements Serializable {
 
     //餐具数量状态  1按餐量提供  0选择具体数量
     private Integer tablewareStatus;
+
+    public void setPayTime(LocalDateTime now) {
+        this.orderTime = now;
+    }
+    public void setPaidStatus(Integer paid) {
+        this.payStatus = paid;
+    }
 }
